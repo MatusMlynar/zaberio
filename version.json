@@ -1,0 +1,16 @@
+{
+  "model": "ZT-1",
+  "version": "2.0",
+  "date": "2026-10-23",
+  "file": "zt1-firmware.bin",
+  "size": 440548,
+  "sha256": "41055a154ef812173e432f755f6661d11c1bfa5f5fc917d90b35daad63772778",
+  "url": "https://github.com/MatusMlynar/zaberio/releases/latest/download/zt1-firmware.bin",
+  "notes": [
+    "Jedinečné heslo jednotky, sieť Tally-xxxxxx chránená WPA2",
+    "Prihlásenie do aplikácie, blokovanie po 5 chybných pokusoch",
+    "Aktualizácia prijme iba firmvér podpísaný výrobcom",
+    "Bezpečné pridávanie nových jednotiek heslom zo štítku",
+    "Obnovenie výrobných nastavení v aplikácii alebo 3× krátkym zapnutím"
+  ]
+}

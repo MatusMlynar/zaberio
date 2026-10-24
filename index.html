@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zaberio ZT-1 – bezdrôtové tally svetlo pre ATEM Mini Pro</title>
+<meta name="description" content="Wi-Fi tally svetlo Zaberio ZT-1 pre ATEM Mini Pro a ATEM Mini Pro ISO: význam svetiel, prvé spustenie, najnovší firmvér na stiahnutie, návod a servis.">
+<link rel="canonical" href="https://matusmlynar.github.io/zaberio/">
+<meta property="og:type" content="product">
+<meta property="og:title" content="Zaberio ZT-1 – bezdrôtové tally svetlo">
+<meta property="og:description" content="Tally svetlo pre ATEM Mini Pro cez Wi-Fi. Návod, firmvér a servis.">
+<meta property="og:image" content="https://matusmlynar.github.io/zaberio/img/og.png">
+<meta property="og:url" content="https://matusmlynar.github.io/zaberio/">
+<meta name="theme-color" content="#16191D">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='4' y='4' width='24' height='24' rx='5' fill='%2316191D'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23D92B24'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Product", "name": "Bezdrôtové tally svetlo ZABERIO ZT-1", "brand": {"@type": "Brand", "name": "Zaberio"}, "model": "ZT-1", "image": "https://matusmlynar.github.io/zaberio/img/og.png", "description": "Bezdrôtové Wi-Fi tally svetlo pre prepínače ATEM Mini Pro a ATEM Mini Pro ISO. Červená = program, zelená = náhľad, kryty s číslom kamery 1 – 20."}</script>
+<style>
+html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}
+/* Layout: jeden úzky stĺpec ako štítok/obal výrobku – čítané na telefóne po naskenovaní QR kódu */
+:root{
+  --bg:#F3F4F6; --surface:#FFFFFF; --ink:#16191D; --muted:#5D6570; --line:#DADDE2;
+  --tally:#D92B24; --preview:#1E9A4B; --setup:#2F66D6; --update:#8445C9;
+  --chip-off:#B9B4A8;
+  --f-display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#14171B; --surface:#1D2126; --ink:#ECEEF1; --muted:#A1A8B2; --line:#2E343B;
+  --tally:#F0463E; --preview:#36B866; --setup:#5B8CF0; --update:#A774E6; --chip-off:#3A3F46; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#14171B; --surface:#1D2126; --ink:#ECEEF1; --muted:#A1A8B2; --line:#2E343B;
+  --tally:#F0463E; --preview:#36B866; --setup:#5B8CF0; --update:#A774E6; --chip-off:#3A3F46; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 var(--f-body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:640px;margin:0 auto;padding-block:20px 48px;display:flex;flex-direction:column;gap:40px}
+h1,h2{font-family:var(--f-display);font-weight:700;text-wrap:balance;letter-spacing:.01em;margin:0}
+h1{font-size:2.6rem;line-height:1.02}
+h2{font-size:1.6rem;line-height:1.1;display:flex;align-items:baseline;gap:10px}
+h2 .tag{font:500 .72rem var(--f-mono);color:var(--muted);letter-spacing:.06em}
+p{margin:0}
+.mono{font-family:var(--f-mono);font-size:.92em}
+section{display:flex;flex-direction:column;gap:14px}
+
+/* hlavička */
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:2px solid var(--ink);padding-bottom:10px}
+.brand{font:700 1.35rem var(--f-display);letter-spacing:.14em}
+.model{font:500 .8rem var(--f-mono);color:var(--muted);letter-spacing:.05em}
+
+/* úvod */
+.hero{display:grid;grid-template-columns:1fr 170px;gap:16px;align-items:center}
+.hero > div{min-width:0;display:flex;flex-direction:column;gap:12px}
+.hero img{width:170px;height:auto;justify-self:end}
+.onair{display:inline-flex;align-items:center;gap:8px;font:700 .82rem var(--f-display);letter-spacing:.16em;
+  color:var(--tally);border:1.5px solid var(--tally);border-radius:3px;padding:2px 9px;width:max-content}
+.onair::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--tally)}
+.lead{color:var(--muted)}
+@media (max-width:440px){.hero{grid-template-columns:1fr 120px}.hero img{width:120px}h1{font-size:2.2rem}}
+
+/* stavy svetla */
+.states{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.state{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:10px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.state img{width:100%;max-width:120px;align-self:center;height:auto}
+.state b{font-family:var(--f-display);font-size:1.1rem;letter-spacing:.02em;display:flex;align-items:center;gap:6px}
+.state b i{width:10px;height:10px;border-radius:50%;flex:none}
+.state span{font-size:.86rem;color:var(--muted);line-height:1.4}
+@media (max-width:440px){.states{grid-template-columns:repeat(2,1fr)}}
+
+/* kroky */
+ol.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0;counter-reset:s}
+ol.steps li{counter-increment:s;display:grid;grid-template-columns:34px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+ol.steps li:last-child{border-bottom:1px solid var(--line)}
+ol.steps li::before{content:counter(s);font:700 1.35rem/1.15 var(--f-display);color:var(--tally)}
+ol.steps li > div{min-width:0}
+.code{font-family:var(--f-mono);font-size:.9em;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:0 5px;white-space:nowrap}
+
+/* tabuľky */
+.tbl{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.93rem}
+th,td{text-align:left;padding:8px 10px 8px 0;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:500;color:var(--muted);width:42%}
+td{font-variant-numeric:tabular-nums}
+
+.sets{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.set{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.set .code{align-self:flex-start;font-size:.95rem}
+.set span{font-size:.88rem;color:var(--muted)}
+@media (max-width:520px){.sets{grid-template-columns:1fr}}
+
+.cover{display:grid;grid-template-columns:130px 1fr;gap:14px;align-items:center}
+.cover img{width:130px;height:auto}
+.cover > div{min-width:0}
+
+ul.warn{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+ul.warn li{padding-left:18px;position:relative}
+ul.warn li::before{content:"";position:absolute;left:0;top:.55em;width:9px;height:9px;background:var(--tally);transform:rotate(45deg)}
+
+.contact{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+.row .lbl{color:var(--muted);font-size:.85rem;width:64px}
+.row .val{font-family:var(--f-mono);font-size:.95rem;user-select:all;min-width:0;overflow-wrap:anywhere}
+button.copy{font:500 .8rem var(--f-body);color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:4px;padding:3px 9px;cursor:pointer}
+button.copy:focus-visible{outline:2px solid var(--setup);outline-offset:2px}
+footer{color:var(--muted);font-size:.82rem;display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--line);padding-top:14px}
+
+a{color:inherit}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 1rem var(--f-body);text-decoration:none;color:var(--surface);background:var(--ink);border-radius:5px;padding:10px 16px;width:max-content;max-width:100%}
+.btn:focus-visible{outline:2px solid var(--setup);outline-offset:2px}
+.fw{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px;display:flex;flex-direction:column;gap:12px}
+.fw .ver{font:700 1.5rem var(--f-display)}
+.fw ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
+.hash{font-family:var(--f-mono);font-size:.78rem;color:var(--muted);overflow-wrap:anywhere}
+.dl{display:flex;flex-direction:column;gap:8px}
+.dl a{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);text-decoration:none}
+.dl a span:last-child{color:var(--muted);font-family:var(--f-mono);font-size:.85rem;white-space:nowrap}
+.dl a:hover span:first-child{text-decoration:underline}
+.fw > *{min-width:0}
+.hash{word-break:break-all}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <span class="brand">ZABERIO</span>
+    <span class="model">ZT-1 · FW 2.0</span>
+  </header>
+
+  <div class="hero">
+    <div>
+      <span class="onair">TALLY</span>
+      <h1>Bezdrôtové tally svetlo ZT-1</h1>
+      <p class="lead">Ukazuje kameramanovi aj moderátorovi, ktorá kamera je práve vo vysielaní. Bezdrôtovo cez Wi-Fi s prepínačmi ATEM Mini Pro a ATEM Mini Pro ISO.</p>
+    </div>
+    <img src="img/zt1.webp" alt="Tally svetlo ZT-1 s krytom s číslom 1" width="170" height="202">
+  </div>
+
+  <section aria-labelledby="h-led">
+    <h2 id="h-led">Čo znamená svetlo</h2>
+    <div class="states">
+      <div class="state"><img src="img/led-cervena.webp" alt=""><b><i style="background:var(--tally)"></i>Červená</b><span>PROGRAM – kamera je naživo</span></div>
+      <div class="state"><img src="img/led-zelena.webp" alt=""><b><i style="background:var(--preview)"></i>Zelená</b><span>NÁHĽAD – kamera je pripravená</span></div>
+      <div class="state"><img src="img/led-vyp.webp" alt=""><b><i style="background:var(--chip-off)"></i>Nesvieti</b><span>Kamera nie je použitá alebo chýba spojenie s ATEM</span></div>
+      <div class="state"><img src="img/led-modra.webp" alt=""><b><i style="background:var(--setup)"></i>Bliká modrá</b><span>Pripája sa k Wi-Fi</span></div>
+      <div class="state"><img src="img/led-modra.webp" alt=""><b><i style="background:var(--setup)"></i>Pulzuje modrá</b><span>Režim nastavenia, sieť Tally-xxxxxx</span></div>
+      <div class="state"><img src="img/led-fialova.webp" alt=""><b><i style="background:var(--update)"></i>Bliká fialová</b><span>Aktualizácia – neodpájajte</span></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-start">
+    <h2 id="h-start">Prvé spustenie <span class="tag">ASI 2 MINÚTY</span></h2>
+    <ol class="steps">
+      <li><div>Pripojte ZT-1 káblom micro-USB k zdroju 5 V. Nová jednotka pomaly pulzuje namodro.</div></li>
+      <li><div>V telefóne sa pripojte k Wi-Fi <span class="code">Tally-xxxxxx</span>. ID aj heslo nájdete na štítku na spodnej strane.</div></li>
+      <li><div>Stránka nastavenia sa otvorí sama. Ak nie, otvorte <span class="code">192.168.4.1</span>.</div></li>
+      <li><div>Vyberte svoju 2,4 GHz Wi-Fi, zadajte jej heslo a IP adresu ATEM (z výroby <span class="code">192.168.1.240</span>). Stlačte <b>Pripojiť</b>.</div></li>
+      <li><div>Telefón vráťte do svojej Wi-Fi a otvorte <span class="code">tally-xxxxxx.local</span> alebo IP adresu z routera. Prihláste sa heslom zo štítku.</div></li>
+      <li><div>Ťuknite na jednotku, nastavte <b>číslo kamery</b> podľa vstupu HDMI na ATEM a nasaďte kryt s rovnakým číslom.</div></li>
+    </ol>
+    <p class="lead">Ďalšie jednotky pridáte v aplikácii v časti <b>Nová jednotka</b>: zadáte heslo zo štítku novej jednotky a zapnete ju. Nastavenia si prevezme sama.</p>
+  </section>
+
+  <section aria-labelledby="h-sets">
+    <h2 id="h-sets">Sady a kryty</h2>
+    <div class="sets">
+      <div class="set"><span class="code">ZT-1/1</span><b>Sada s 1 krytom</b><span>Číslo krytu podľa objednávky (1 – 20)</span></div>
+      <div class="set"><span class="code">ZT-1/4</span><b>Sada so 4 krytmi</b><span>Kryty s číslami 1, 2, 3 a 4</span></div>
+      <div class="set"><span class="code">ZT-C07</span><b>Samostatný kryt</b><span>Kryt s ľubovoľným číslom 01 – 20</span></div>
+    </div>
+    <div class="cover">
+      <img src="img/kryt.webp" alt="Kryt s číslom zložený zo základne" width="130" height="163">
+      <div>Kryt vymeníte bez náradia: chyťte ho za dlhé strany, vytiahnite smerom hore a nový zatlačte, kým necvakne. Číslo má byť čitateľné zo strany kameramana. Kábel ani napájací zdroj nie sú súčasťou balenia.</div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-tech">
+    <h2 id="h-tech">Technické údaje</h2>
+    <div class="tbl"><table>
+      <tr><th>Napájanie</th><td>5 V DC, micro-USB, max. 0,3 A</td></tr>
+      <tr><th>Wi-Fi</th><td>802.11 b/g/n, 2,4 GHz, WPA2, max. 18 dBm e.i.r.p.</td></tr>
+      <tr><th>Kompatibilita</th><td>ATEM Mini Pro, ATEM Mini Pro ISO</td></tr>
+      <tr><th>Číslo kamery</th><td>1 – 20</td></tr>
+      <tr><th>Upevnenie</th><td>pätka do sánok + závit 1/4″-20 (max. 7 mm)</td></tr>
+      <tr><th>Rozmery, hmotnosť</th><td>40 × 31 × 49 mm, približne 25 g</td></tr>
+      <tr><th>Prostredie</th><td>len v interiéri, IP20, 0 – 40 °C</td></tr>
+    </table></div>
+  </section>
+
+  <section aria-labelledby="h-safe">
+    <h2 id="h-safe">Bezpečne</h2>
+    <ul class="warn">
+      <li>Napájajte iba z USB zdroja 5 V s označením CE. Nikdy nie 9 V ani 12 V cez redukciu.</li>
+      <li>Upevnite svetlo pevne, aby nespadlo z kamery ani statívu.</li>
+      <li>Len do suchých vnútorných priestorov. Chráňte pred vodou.</li>
+      <li>Kryty sú malé časti – nevhodné pre deti do 3 rokov.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="h-help">
+    <h2 id="h-help">Keď niečo nefunguje</h2>
+    <div class="tbl"><table>
+      <tr><th>Stále pulzuje modrá</th><td>Dokončite nastavenie cez sieť Tally-xxxxxx. Wi-Fi musí vysielať v pásme 2,4 GHz.</td></tr>
+      <tr><th>Nesvieti, aplikácia hlási „Bez ATEMu“</th><td>Skontrolujte IP adresu ATEM a to, že ATEM je káblom v tej istej sieti.</td></tr>
+      <tr><th>Neotvorí sa .local adresa</th><td>Použite IP adresu jednotky zo zoznamu zariadení v routeri.</td></tr>
+      <tr><th>Zabudnuté heslo</th><td>Pripojte a do 2 s odpojte napájanie 2×, tretíkrát nechajte pripojené. Platí opäť heslo zo štítku.</td></tr>
+    </table></div>
+  </section>
+
+  <section aria-labelledby="h-fw" id="firmver">
+    <h2 id="h-fw">Firmvér</h2>
+    <div class="fw">
+      <div><span class="ver" id="fw-ver">Verzia 2.0</span> <span class="lead" id="fw-date">· 23. 10. 2026</span></div>
+      <ul id="fw-notes">
+        <li>Jedinečné heslo jednotky, sieť Tally-xxxxxx chránená WPA2</li>
+        <li>Prihlásenie do aplikácie, blokovanie po 5 chybných pokusoch</li>
+        <li>Aktualizácia prijme iba firmvér podpísaný výrobcom</li>
+        <li>Bezpečné pridávanie nových jednotiek heslom zo štítku</li>
+        <li>Obnovenie výrobných nastavení v aplikácii alebo 3× krátkym zapnutím</li>
+      </ul>
+      <a class="btn" id="fw-link" href="https://github.com/MatusMlynar/zaberio/releases/latest/download/zt1-firmware.bin">Stiahnuť najnovší firmvér (.bin)</a>
+      <p class="lead">Súbor nahráte v aplikácii ZT-1: nastavenia jednotky → <b>Firmvér</b> → <b>Vybrať súbor</b> → <b>Nahrať</b>. ZT-1 prijme len súbor podpísaný výrobcom, nastavenia zostanú zachované. Počas nahrávania bliká nafialovo – neodpájajte napájanie.</p>
+      <p class="hash" id="fw-hash">SHA-256: 41055a154ef812173e432f755f6661d11c1bfa5f5fc917d90b35daad63772778</p>
+      <p class="lead"><a href="https://github.com/MatusMlynar/zaberio/releases">Všetky verzie a zoznam zmien</a></p>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-dl">
+    <h2 id="h-dl">Dokumenty</h2>
+    <div class="dl">
+      <a href="navod-zt1.pdf"><span>Návod na použitie ZT-1</span><span>PDF</span></a>
+      <a href="eu-vyhlasenie.pdf"><span>EÚ vyhlásenie o zhode</span><span>PDF</span></a>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-servis">
+    <h2 id="h-servis">Servis a záruka</h2>
+    <p>Na ZT-1 poskytujeme <b>záruku 36 mesiacov</b> nad rámec vašich zákonných práv. Pri kontakte majte pripravené výrobné číslo zo štítku.</p>
+    <div class="contact">
+      <div class="row"><span class="lbl">E-mail</span><span class="val" id="v-mail">servis@zaberio.sk</span><button class="copy" type="button" data-copy="v-mail">Kopírovať</button></div>
+      <div class="row"><span class="lbl">Telefón</span><span class="val" id="v-tel">+421 55 600 4120</span><button class="copy" type="button" data-copy="v-tel">Kopírovať</button></div>
+      <div class="row"><span class="lbl">Adresa</span><span class="val">Zaberio s.r.o., Vlnová 7, 040 11 Košice</span></div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Podrobný návod na použitie je súčasťou balenia a nájdete ho aj v časti Dokumenty.</span>
+    <span>ATEM a Blackmagic Design sú ochranné známky Blackmagic Design Pty. Ltd. Wi-Fi je ochranná známka Wi-Fi Alliance. Zaberio s.r.o. nie je s týmito spoločnosťami prepojená.</span>
+  </footer>
+</div>
+
+<script>
+document.querySelectorAll('button.copy').forEach(b => b.addEventListener('click', () => {
+  const el = document.getElementById(b.dataset.copy), text = el.textContent.trim();
+  const done = () => { b.textContent = 'Skopírované'; setTimeout(() => b.textContent = 'Kopírovať', 1600); };
+  const fallback = () => { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Označené'; };
+  try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+}));
+</script>
+<script>
+fetch('version.json', {cache: 'no-store'}).then(r => r.ok ? r.json() : null).then(v => {
+  if (!v) return;
+  const d = new Date(v.date);
+  document.getElementById('fw-ver').textContent = 'Verzia ' + v.version;
+  if (!isNaN(d)) document.getElementById('fw-date').textContent = '· ' + d.toLocaleDateString('sk-SK');
+  if (v.url) document.getElementById('fw-link').href = v.url;
+  if (v.sha256) document.getElementById('fw-hash').textContent = 'SHA-256: ' + v.sha256;
+  if (Array.isArray(v.notes)) {
+    const ul = document.getElementById('fw-notes'); ul.textContent = '';
+    v.notes.forEach(t => { const li = document.createElement('li'); li.textContent = t; ul.appendChild(li); });
+  }
+}).catch(() => {});
+</script>
+
+</body>
+</html>
