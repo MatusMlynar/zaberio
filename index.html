@@ -212,17 +212,17 @@ a{color:inherit}
   <section aria-labelledby="h-fw" id="firmver">
     <h2 id="h-fw">Firmvér</h2>
     <div class="fw">
-      <div><span class="ver" id="fw-ver">Verzia 2.0</span> <span class="lead" id="fw-date">· 23. 10. 2026</span></div>
+      <div><span class="ver" id="fw-ver">Verzia 2.1</span> <span class="lead" id="fw-date">· 24. 10. 2026</span></div>
       <ul id="fw-notes">
-        <li>Jedinečné heslo jednotky, sieť Tally-xxxxxx chránená WPA2</li>
-        <li>Prihlásenie do aplikácie, blokovanie po 5 chybných pokusoch</li>
-        <li>Aktualizácia prijme iba firmvér podpísaný výrobcom</li>
-        <li>Bezpečné pridávanie nových jednotiek heslom zo štítku</li>
-        <li>Obnovenie výrobných nastavení v aplikácii alebo 3× krátkym zapnutím</li>
+        <li>Aktualizácia jedným tlačidlom: jednotka si nový firmvér stiahne z webu výrobcu sama</li>
+        <li>Pred inštaláciou sa overí podpis výrobcu, aktualizácia sa nikdy nespustí sama</li>
+        <li>Hromadná aktualizácia všetkých jednotiek v sieti</li>
+        <li>Nahranie zo súboru ostáva pre siete bez internetu</li>
       </ul>
+      <p class="lead"><b>Od verzie 2.1 stačí tlačidlo:</b> v aplikácii ZT-1 stlačte <b>Vyhľadať aktualizáciu</b> (v nastaveniach jednotky alebo v časti Aktualizácia firmvéru pre všetky jednotky) a potom <b>Nainštalovať</b>. Jednotka si firmvér stiahne sama, overí podpis výrobcu a reštartuje sa; nastavenia zostanú zachované. Počas aktualizácie bliká nafialovo – neodpájajte napájanie.</p>
       <a class="btn" id="fw-link" href="https://github.com/MatusMlynar/zaberio/releases/latest/download/zt1-firmware.bin">Stiahnuť najnovší firmvér (.bin)</a>
-      <p class="lead">Súbor nahráte v aplikácii ZT-1: nastavenia jednotky → <b>Firmvér</b> → <b>Vybrať súbor</b> → <b>Nahrať</b>. ZT-1 prijme len súbor podpísaný výrobcom, nastavenia zostanú zachované. Počas nahrávania bliká nafialovo – neodpájajte napájanie.</p>
-      <p class="hash" id="fw-hash">SHA-256: 41055a154ef812173e432f755f6661d11c1bfa5f5fc917d90b35daad63772778</p>
+      <p class="lead">Súbor .bin potrebujete len v sieti bez internetu (v aplikácii nastavenia jednotky → <b>Firmvér</b> → <b>Sieť bez internetu – nahrať súbor .bin</b>) a pri prechode z verzie 2.0 (nastavenia jednotky → <b>Firmvér</b> → <b>Vybrať súbor</b> → <b>Nahrať do tejto jednotky</b>). ZT-1 prijme len súbor podpísaný výrobcom.</p>
+      <p class="hash" id="fw-hash">SHA-256: 014b311cf01e86ca13a542af87a028f43f48bc8904eb9df90f5fa2bb253e3812</p>
       <p class="lead"><a href="https://github.com/MatusMlynar/zaberio/releases">Všetky verzie a zoznam zmien</a></p>
     </div>
   </section>
