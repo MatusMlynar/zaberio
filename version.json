@@ -1,15 +1,15 @@
 {
   "model": "ZT-1",
-  "version": "2.1",
-  "date": "2026-10-24",
+  "version": "2.1.5",
+  "date": "2026-10-28",
   "file": "zt1-firmware.bin",
-  "size": 527604,
-  "sha256": "014b311cf01e86ca13a542af87a028f43f48bc8904eb9df90f5fa2bb253e3812",
+  "size": 531876,
+  "sha256": "7551fb91912e5918dad10e5a1bdcd3438331f0775b89035c7cd59f43ba16aef9",
   "url": "https://github.com/MatusMlynar/zaberio/releases/latest/download/zt1-firmware.bin",
   "notes": [
-    "Aktualizácia jedným tlačidlom: jednotka si nový firmvér stiahne z webu výrobcu sama",
-    "Pred inštaláciou sa overí podpis výrobcu, aktualizácia sa nikdy nespustí sama",
-    "Hromadná aktualizácia všetkých jednotiek v sieti",
-    "Nahranie zo súboru ostáva pre siete bez internetu"
+    "Spoľahlivejšie spojenie s ATEMom – odstránené výpadky tally",
+    "Voľba režimu Wi-Fi (802.11n / 802.11g)",
+    "Voľba vysielacieho výkonu",
+    "Rozšírená diagnostika spojenia"
   ]
 }
